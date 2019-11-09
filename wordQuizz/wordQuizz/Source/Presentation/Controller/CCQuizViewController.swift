@@ -10,11 +10,15 @@ import UIKit
 
 class CCQuizViewController: UIViewController {
 
+    var mainView: CCQuizView {
+        guard let mainView = self.view as? CCQuizView else { fatalError() }
+        return mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-
-
+    
+    
 }
 

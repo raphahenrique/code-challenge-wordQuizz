@@ -18,6 +18,7 @@
 		AB711C0023762C6F00708D30 /* CCQuizBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BFF23762C6F00708D30 /* CCQuizBusiness.swift */; };
 		AB711C022376421300708D30 /* CCQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C012376421300708D30 /* CCQuizView.swift */; };
 		AB711C042376428000708D30 /* CCQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C032376428000708D30 /* CCQuizViewModel.swift */; };
+		AB711C092376604700708D30 /* CCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C082376604700708D30 /* CCLoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AB711BFF23762C6F00708D30 /* CCQuizBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizBusiness.swift; sourceTree = "<group>"; };
 		AB711C012376421300708D30 /* CCQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizView.swift; sourceTree = "<group>"; };
 		AB711C032376428000708D30 /* CCQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizViewModel.swift; sourceTree = "<group>"; };
+		AB711C082376604700708D30 /* CCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +146,8 @@
 		AB711BF423762A4200708D30 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				AB711BD42376277000708D30 /* Quiz.storyboard */,
-				AB711BD92376277100708D30 /* LaunchScreen.storyboard */,
+				AB711C062376440A00708D30 /* Quiz */,
+				AB711C05237643FB00708D30 /* LaunchScreen */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -193,10 +195,35 @@
 		AB711BFA23762AE100708D30 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				AB711C072376602700708D30 /* View */,
 				AB711BDC2376277100708D30 /* Info.plist */,
 				AB711BD02376277000708D30 /* AppDelegate.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		AB711C05237643FB00708D30 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BD92376277100708D30 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		AB711C062376440A00708D30 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BD42376277000708D30 /* Quiz.storyboard */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		AB711C072376602700708D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB711C082376604700708D30 /* CCLoadingView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +332,7 @@
 				AB711C022376421300708D30 /* CCQuizView.swift in Sources */,
 				AB711BD32376277000708D30 /* CCQuizViewController.swift in Sources */,
 				AB711C0023762C6F00708D30 /* CCQuizBusiness.swift in Sources */,
+				AB711C092376604700708D30 /* CCLoadingView.swift in Sources */,
 				AB711BFC23762BB300708D30 /* CCProvider.swift in Sources */,
 				AB711BD12376277000708D30 /* AppDelegate.swift in Sources */,
 			);
