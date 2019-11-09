@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct CCQuizModel: Decodable {
+    var question: String
+    var answer: [String]
+}
