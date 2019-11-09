@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		AB711BD12376277000708D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BD02376277000708D30 /* AppDelegate.swift */; };
-		AB711BD32376277000708D30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BD22376277000708D30 /* ViewController.swift */; };
-		AB711BD62376277000708D30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB711BD42376277000708D30 /* Main.storyboard */; };
+		AB711BD32376277000708D30 /* CCQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BD22376277000708D30 /* CCQuizViewController.swift */; };
+		AB711BD62376277000708D30 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB711BD42376277000708D30 /* Quiz.storyboard */; };
 		AB711BD82376277100708D30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB711BD72376277100708D30 /* Assets.xcassets */; };
 		AB711BDB2376277100708D30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB711BD92376277100708D30 /* LaunchScreen.storyboard */; };
 		AB711BE62376277100708D30 /* wordQuizzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BE52376277100708D30 /* wordQuizzTests.swift */; };
+		AB711BFC23762BB300708D30 /* CCProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BFB23762BB300708D30 /* CCProvider.swift */; };
+		AB711BFE23762BFF00708D30 /* CCQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BFD23762BFF00708D30 /* CCQuizModel.swift */; };
+		AB711C0023762C6F00708D30 /* CCQuizBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BFF23762C6F00708D30 /* CCQuizBusiness.swift */; };
+		AB711C022376421300708D30 /* CCQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C012376421300708D30 /* CCQuizView.swift */; };
+		AB711C042376428000708D30 /* CCQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C032376428000708D30 /* CCQuizViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +33,19 @@
 /* Begin PBXFileReference section */
 		AB711BCD2376277000708D30 /* wordQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB711BD02376277000708D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB711BD22376277000708D30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AB711BD52376277000708D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB711BD22376277000708D30 /* CCQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizViewController.swift; sourceTree = "<group>"; };
+		AB711BD52376277000708D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Quiz.storyboard; sourceTree = "<group>"; };
 		AB711BD72376277100708D30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB711BDA2376277100708D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB711BDC2376277100708D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB711BE12376277100708D30 /* wordQuizzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wordQuizzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB711BE52376277100708D30 /* wordQuizzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordQuizzTests.swift; sourceTree = "<group>"; };
 		AB711BE72376277100708D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB711BFB23762BB300708D30 /* CCProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCProvider.swift; sourceTree = "<group>"; };
+		AB711BFD23762BFF00708D30 /* CCQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizModel.swift; sourceTree = "<group>"; };
+		AB711BFF23762C6F00708D30 /* CCQuizBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizBusiness.swift; sourceTree = "<group>"; };
+		AB711C012376421300708D30 /* CCQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizView.swift; sourceTree = "<group>"; };
+		AB711C032376428000708D30 /* CCQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +87,8 @@
 		AB711BCF2376277000708D30 /* wordQuizz */ = {
 			isa = PBXGroup;
 			children = (
-				AB711BD02376277000708D30 /* AppDelegate.swift */,
-				AB711BD22376277000708D30 /* ViewController.swift */,
-				AB711BD42376277000708D30 /* Main.storyboard */,
-				AB711BD72376277100708D30 /* Assets.xcassets */,
-				AB711BD92376277100708D30 /* LaunchScreen.storyboard */,
-				AB711BDC2376277100708D30 /* Info.plist */,
+				AB711BF12376295A00708D30 /* Resources */,
+				AB711BF02376295000708D30 /* Source */,
 			);
 			path = wordQuizz;
 			sourceTree = "<group>";
@@ -94,6 +100,103 @@
 				AB711BE72376277100708D30 /* Info.plist */,
 			);
 			path = wordQuizzTests;
+			sourceTree = "<group>";
+		};
+		AB711BF02376295000708D30 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BF2237629FF00708D30 /* Presentation */,
+				AB711BFA23762AE100708D30 /* Infrastructure */,
+				AB711BF923762AC500708D30 /* Provider */,
+				AB711BF823762ABB00708D30 /* Model */,
+				AB711BF723762AA400708D30 /* Business */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		AB711BF12376295A00708D30 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BD72376277100708D30 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB711BF2237629FF00708D30 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BF623762A6900708D30 /* Controller */,
+				AB711BF523762A6400708D30 /* View */,
+				AB711BF423762A4200708D30 /* Storyboard */,
+				AB711BF323762A3800708D30 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AB711BF323762A3800708D30 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB711C032376428000708D30 /* CCQuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB711BF423762A4200708D30 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BD42376277000708D30 /* Quiz.storyboard */,
+				AB711BD92376277100708D30 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		AB711BF523762A6400708D30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB711C012376421300708D30 /* CCQuizView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB711BF623762A6900708D30 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BD22376277000708D30 /* CCQuizViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB711BF723762AA400708D30 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BFF23762C6F00708D30 /* CCQuizBusiness.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		AB711BF823762ABB00708D30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BFD23762BFF00708D30 /* CCQuizModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB711BF923762AC500708D30 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BFB23762BB300708D30 /* CCProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		AB711BFA23762AE100708D30 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				AB711BDC2376277100708D30 /* Info.plist */,
+				AB711BD02376277000708D30 /* AppDelegate.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +282,7 @@
 			files = (
 				AB711BDB2376277100708D30 /* LaunchScreen.storyboard in Resources */,
 				AB711BD82376277100708D30 /* Assets.xcassets in Resources */,
-				AB711BD62376277000708D30 /* Main.storyboard in Resources */,
+				AB711BD62376277000708D30 /* Quiz.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB711BD32376277000708D30 /* ViewController.swift in Sources */,
+				AB711BFE23762BFF00708D30 /* CCQuizModel.swift in Sources */,
+				AB711C042376428000708D30 /* CCQuizViewModel.swift in Sources */,
+				AB711C022376421300708D30 /* CCQuizView.swift in Sources */,
+				AB711BD32376277000708D30 /* CCQuizViewController.swift in Sources */,
+				AB711C0023762C6F00708D30 /* CCQuizBusiness.swift in Sources */,
+				AB711BFC23762BB300708D30 /* CCProvider.swift in Sources */,
 				AB711BD12376277000708D30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,12 +329,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AB711BD42376277000708D30 /* Main.storyboard */ = {
+		AB711BD42376277000708D30 /* Quiz.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AB711BD52376277000708D30 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Quiz.storyboard;
 			sourceTree = "<group>";
 		};
 		AB711BD92376277100708D30 /* LaunchScreen.storyboard */ = {
@@ -362,7 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Z67258WU3;
-				INFOPLIST_FILE = wordQuizz/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/wordQuizz/Source/Infrastructure/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Z67258WU3;
-				INFOPLIST_FILE = wordQuizz/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/wordQuizz/Source/Infrastructure/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
