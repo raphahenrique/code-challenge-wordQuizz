@@ -33,9 +33,12 @@ class CCQuizManager {
                         self?.delegate?.didFetchQuiz(quizViewModel)
                     }
                 } catch {
-                    let currentError = CCError(error: error, errorType: .genericError)
+                    let currentError = CCError(error: error, errorType: .parseError)
                     self?.delegate?.errorToFetch(currentError)
                 }
+            } else {
+                let currentError = CCError(error: nil, errorType: .genericError)
+                self?.delegate?.errorToFetch(currentError)
             }
         }
     }

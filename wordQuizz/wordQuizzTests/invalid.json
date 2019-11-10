@@ -1,2 +1,8 @@
-
-Invalid
+{
+    "wrong": [
+        "abstract",
+        "void",
+        "volatile",
+        "while"
+    ]
+}

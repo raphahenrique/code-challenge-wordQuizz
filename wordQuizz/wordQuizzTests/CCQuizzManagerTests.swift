@@ -16,6 +16,9 @@ class CCQuizzManagerTests: XCTestCase, CCQuizManagerDelegate {
     private var didFetchExpectation: XCTestExpectation!
     private var quizViewModel: CCQuizViewModel!
     
+    private var errorToFetchExpectation: XCTestExpectation!
+    private var error: CCError!
+    
     override func setUp() {
         super.setUp()
     }
@@ -36,6 +39,18 @@ class CCQuizzManagerTests: XCTestCase, CCQuizManagerDelegate {
         
         XCTAssertEqual(quizViewModel.question, "What are all the java keywords?")
     }
+    
+    func testInvalidResponse() {
+        errorToFetchExpectation = XCTestExpectation(description: "errorToFetchExpectation")
+        let provider = CCQuizProviderMock(fileName: "invalid")
+        let manager = CCQuizManager(delegate: self, provider: provider)
+        
+        manager.fetchWordQuiz()
+        
+        wait(for: [errorToFetchExpectation], timeout: 2)
+        
+        XCTAssert(error.errorType == .parseError)
+    }
 
     func didFetchQuiz(_ quiz: CCQuizViewModel) {
         self.quizViewModel = quiz
@@ -43,7 +58,8 @@ class CCQuizzManagerTests: XCTestCase, CCQuizManagerDelegate {
     }
     
     func errorToFetch(_ error: CCError) {
-        print("error")
+        self.error = error
+        errorToFetchExpectation.fulfill()
     }
     
 }
