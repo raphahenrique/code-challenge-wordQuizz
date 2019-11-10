@@ -15,10 +15,12 @@
 		AB711BE62376277100708D30 /* wordQuizzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BE52376277100708D30 /* wordQuizzTests.swift */; };
 		AB711BFE23762BFF00708D30 /* CCQuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711BFD23762BFF00708D30 /* CCQuizModel.swift */; };
 		AB711C022376421300708D30 /* CCQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C012376421300708D30 /* CCQuizView.swift */; };
-		AB711C042376428000708D30 /* CCQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C032376428000708D30 /* CCQuizViewModel.swift */; };
-		AB711C092376604700708D30 /* CCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C082376604700708D30 /* CCLoadingView.swift */; };
 		AB711C0B2377416B00708D30 /* CCQuizProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C0A2377416B00708D30 /* CCQuizProvider.swift */; };
 		AB711C0D23774A7300708D30 /* CCQuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C0C23774A7300708D30 /* CCQuizManager.swift */; };
+		AB711C1023776CF900708D30 /* CCQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C0F23776CF900708D30 /* CCQuizViewModel.swift */; };
+		ABB5C2FB23785D2200F2B1B6 /* CCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB5C2FA23785D2200F2B1B6 /* CCUtils.swift */; };
+		ABB5C30023788E5C00F2B1B6 /* CCViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB5C2FF23788E5C00F2B1B6 /* CCViewControllerExtension.swift */; };
+		ABB5C3032378903000F2B1B6 /* CCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB5C3022378903000F2B1B6 /* CCLoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +46,12 @@
 		AB711BE72376277100708D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB711BFD23762BFF00708D30 /* CCQuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizModel.swift; sourceTree = "<group>"; };
 		AB711C012376421300708D30 /* CCQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizView.swift; sourceTree = "<group>"; };
-		AB711C032376428000708D30 /* CCQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizViewModel.swift; sourceTree = "<group>"; };
-		AB711C082376604700708D30 /* CCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLoadingView.swift; sourceTree = "<group>"; };
 		AB711C0A2377416B00708D30 /* CCQuizProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCQuizProvider.swift; sourceTree = "<group>"; };
 		AB711C0C23774A7300708D30 /* CCQuizManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCQuizManager.swift; sourceTree = "<group>"; };
+		AB711C0F23776CF900708D30 /* CCQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizViewModel.swift; sourceTree = "<group>"; };
+		ABB5C2FA23785D2200F2B1B6 /* CCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCUtils.swift; sourceTree = "<group>"; };
+		ABB5C2FF23788E5C00F2B1B6 /* CCViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCViewControllerExtension.swift; sourceTree = "<group>"; };
+		ABB5C3022378903000F2B1B6 /* CCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,20 +131,12 @@
 		AB711BF2237629FF00708D30 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				AB711C0E23776C9600708D30 /* ViewModel */,
 				AB711BF623762A6900708D30 /* Controller */,
 				AB711BF523762A6400708D30 /* View */,
 				AB711BF423762A4200708D30 /* Storyboard */,
-				AB711BF323762A3800708D30 /* ViewModel */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		AB711BF323762A3800708D30 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AB711C032376428000708D30 /* CCQuizViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AB711BF423762A4200708D30 /* Storyboard */ = {
@@ -195,7 +191,9 @@
 		AB711BFA23762AE100708D30 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				AB711C072376602700708D30 /* View */,
+				ABB5C3012378902000F2B1B6 /* View */,
+				ABB5C2FE23788E4000F2B1B6 /* Extensions */,
+				ABB5C2F923785D1200F2B1B6 /* Utils */,
 				AB711BDC2376277100708D30 /* Info.plist */,
 				AB711BD02376277000708D30 /* AppDelegate.swift */,
 			);
@@ -218,10 +216,34 @@
 			path = Quiz;
 			sourceTree = "<group>";
 		};
-		AB711C072376602700708D30 /* View */ = {
+		AB711C0E23776C9600708D30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AB711C082376604700708D30 /* CCLoadingView.swift */,
+				AB711C0F23776CF900708D30 /* CCQuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ABB5C2F923785D1200F2B1B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ABB5C2FA23785D2200F2B1B6 /* CCUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		ABB5C2FE23788E4000F2B1B6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ABB5C2FF23788E5C00F2B1B6 /* CCViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ABB5C3012378902000F2B1B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABB5C3022378903000F2B1B6 /* CCLoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,12 +350,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB711BFE23762BFF00708D30 /* CCQuizModel.swift in Sources */,
-				AB711C042376428000708D30 /* CCQuizViewModel.swift in Sources */,
+				ABB5C3032378903000F2B1B6 /* CCLoadingView.swift in Sources */,
 				AB711C0D23774A7300708D30 /* CCQuizManager.swift in Sources */,
+				ABB5C30023788E5C00F2B1B6 /* CCViewControllerExtension.swift in Sources */,
 				AB711C022376421300708D30 /* CCQuizView.swift in Sources */,
+				ABB5C2FB23785D2200F2B1B6 /* CCUtils.swift in Sources */,
+				AB711C1023776CF900708D30 /* CCQuizViewModel.swift in Sources */,
 				AB711BD32376277000708D30 /* CCQuizViewController.swift in Sources */,
 				AB711C0B2377416B00708D30 /* CCQuizProvider.swift in Sources */,
-				AB711C092376604700708D30 /* CCLoadingView.swift in Sources */,
 				AB711BD12376277000708D30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,5 +10,10 @@ import Foundation
 
 struct CCQuizModel: Decodable {
     var question: String
-    var answer: [String]
+    var answers: [String]
+    
+    private enum CodingKeys: String, CodingKey {
+        case question
+        case answers = "answer"
+    }
 }

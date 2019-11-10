@@ -18,24 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_ what are all the java keywords?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJc-jy-PRV">
-                                <rect key="frame" x="16" y="44" width="343" height="81.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="word quiz" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJc-jy-PRV">
+                                <rect key="frame" x="16" y="44" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="_insert word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFi-d2-Qp6">
-                                <rect key="frame" x="16" y="141.5" width="343" height="42"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="_insert word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFi-d2-Qp6">
+                                <rect key="frame" x="16" y="101" width="343" height="42"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="5Gx-6q-nSG"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XfT-GL-bT4">
-                                <rect key="frame" x="16" y="199.5" width="343" height="331.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XfT-GL-bT4">
+                                <rect key="frame" x="16" y="159" width="343" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-v0-CWA" userLabel="Bottom View">
@@ -102,7 +102,7 @@
                             <constraint firstItem="pFi-d2-Qp6" firstAttribute="leading" secondItem="qJc-jy-PRV" secondAttribute="leading" id="MdB-Pd-lPq"/>
                             <constraint firstItem="qJc-jy-PRV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="ONo-vf-9Ic"/>
                             <constraint firstItem="qJc-jy-PRV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QFk-tc-lPz"/>
-                            <constraint firstItem="gmF-v0-CWA" firstAttribute="top" secondItem="XfT-GL-bT4" secondAttribute="bottom" id="X7T-CA-cMU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XfT-GL-bT4" secondAttribute="bottom" constant="136" id="X7T-CA-cMU"/>
                             <constraint firstItem="pFi-d2-Qp6" firstAttribute="top" secondItem="qJc-jy-PRV" secondAttribute="bottom" constant="16" id="aZB-e4-VHb"/>
                             <constraint firstItem="XfT-GL-bT4" firstAttribute="top" secondItem="pFi-d2-Qp6" secondAttribute="bottom" constant="16" id="jyC-By-YI3"/>
                             <constraint firstItem="pFi-d2-Qp6" firstAttribute="trailing" secondItem="qJc-jy-PRV" secondAttribute="trailing" id="pg6-L1-KDU"/>
@@ -111,6 +111,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
                             <outlet property="amountRightLabel" destination="wER-Vq-Sgr" id="GcH-Yp-Qz0"/>
+                            <outlet property="bottomView" destination="gmF-v0-CWA" id="AOQ-gV-nON"/>
+                            <outlet property="bottomViewBottomConstraint" destination="BcH-f4-0Ya" id="Pd5-Ym-wx8"/>
                             <outlet property="quizTitleLabel" destination="qJc-jy-PRV" id="lAm-oC-GmO"/>
                             <outlet property="startResetButton" destination="Mwc-49-iBL" id="VoT-N3-qKf"/>
                             <outlet property="timerLabel" destination="XdB-cX-phQ" id="a3K-Et-nb8"/>
