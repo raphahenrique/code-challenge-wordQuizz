@@ -11,7 +11,7 @@ import Foundation
 typealias CCHandler = (Data?, CCError?) -> Void
 
 struct CCError {
-    let error: Error
+    let error: Error?
     let errorType: CCErrorType
 }
 
@@ -20,7 +20,11 @@ enum CCErrorType {
     case parseError
 }
 
-class CCQuizProvider {
+protocol CCQuizProviderProtocol {
+    func fetchWordQuiz(completion: @escaping CCHandler)
+}
+
+class CCQuizProvider: CCQuizProviderProtocol {
     
     let wordQuizJsonURL = "https://codechallenge.arctouch.com/quiz/1"
     

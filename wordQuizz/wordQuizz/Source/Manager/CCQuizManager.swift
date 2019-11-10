@@ -15,11 +15,11 @@ protocol CCQuizManagerDelegate {
 
 class CCQuizManager {
     
-    private let provider: CCQuizProvider
+    private let provider: CCQuizProviderProtocol
     var delegate: CCQuizManagerDelegate?
     
-    init(delegate: CCQuizManagerDelegate? = nil) {
-        self.provider = CCQuizProvider()
+    init(delegate: CCQuizManagerDelegate? = nil, provider: CCQuizProviderProtocol = CCQuizProvider()) {
+        self.provider = provider
         self.delegate = delegate
     }
     
