@@ -15,11 +15,11 @@ protocol CCQuizManagerDelegate {
 
 class CCQuizManager {
     
-    private let provider: CCQuizProvider
+    private let provider: CCQuizProviderProtocol
     var delegate: CCQuizManagerDelegate?
     
-    init(delegate: CCQuizManagerDelegate? = nil) {
-        self.provider = CCQuizProvider()
+    init(delegate: CCQuizManagerDelegate? = nil, provider: CCQuizProviderProtocol = CCQuizProvider()) {
+        self.provider = provider
         self.delegate = delegate
     }
     
@@ -33,9 +33,12 @@ class CCQuizManager {
                         self?.delegate?.didFetchQuiz(quizViewModel)
                     }
                 } catch {
-                    let currentError = CCError(error: error, errorType: .genericError)
+                    let currentError = CCError(error: error, errorType: .parseError)
                     self?.delegate?.errorToFetch(currentError)
                 }
+            } else {
+                let currentError = CCError(error: nil, errorType: .genericError)
+                self?.delegate?.errorToFetch(currentError)
             }
         }
     }

@@ -16,10 +16,12 @@ extension UIViewController {
     }
     
     func stopLoading(duration: TimeInterval = 0.25) {
-        if let loadingView = view.subviews.first(where: { (view) -> Bool in
-            return view is CCLoadingView
-        }) as? CCLoadingView {
-            loadingView.hide(duration: duration)
+        DispatchQueue.main.async {
+            if let loadingView = self.view.subviews.first(where: { (view) -> Bool in
+                return view is CCLoadingView
+            }) as? CCLoadingView {
+                loadingView.hide(duration: duration)
+            }
         }
     }
     
