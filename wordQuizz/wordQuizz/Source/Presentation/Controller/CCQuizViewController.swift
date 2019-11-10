@@ -8,11 +8,13 @@
 
 import UIKit
 
-class CCQuizViewController: UIViewController, CCQuizViewDelegate, CCQuizManagerDelegate {
+class CCQuizViewController: UIViewController {
 
     // MARK: - Constants
     
-    let kZero = 0
+    private let kZero = 0
+    private let kOne = 1
+    private let kOneSecond = 1.0
     
     // MARK: - Properties
     
@@ -23,9 +25,11 @@ class CCQuizViewController: UIViewController, CCQuizViewDelegate, CCQuizManagerD
     private lazy var manager = CCQuizManager(delegate: self)
     private var wordsLeft: [String]?
     private var totalWords = 0
-    
     private var correctWords = [String]()
-    // private var correctCount = 0
+    
+    private var timer = Timer()
+    private var totalSeconds = 30
+    private var timerIsOn = false
     
     // MARK: - Overrides
     
@@ -44,9 +48,11 @@ class CCQuizViewController: UIViewController, CCQuizViewDelegate, CCQuizManagerD
         mainView.wordTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         mainView.wordsTableView.delegate = self
         mainView.wordsTableView.dataSource = self
+        mainView.updateButtonText(isPlaying: timerIsOn)
     }
     
     private func fetchQuiz() {
+        // start loading
         manager.fetchWordQuiz()
     }
     
@@ -54,13 +60,14 @@ class CCQuizViewController: UIViewController, CCQuizViewDelegate, CCQuizManagerD
     private func textDidChange(_ textField: UITextField) {
         if let currentWord = textField.text {
             if isMatch(currentWord) {
-                if let wordsLeftCount = wordsLeft?.count {
-                    correctWords.append(currentWord)
-                    addAnswerToTableView()
-                    clearTextField()
-                    if correctWords.count == totalWords {
-                        print("WIN !!!")
-                    }
+                correctWords.append(currentWord)
+                wordsLeft = wordsLeft?.filter{ $0 != currentWord }
+                addAnswerToTableView()
+                updateCount()
+                clearTextField()
+                if correctWords.count == totalWords {
+                    print("!!! WIN !!!")
+                    stopTimer()
                 }
             }
         }
@@ -70,7 +77,6 @@ class CCQuizViewController: UIViewController, CCQuizViewDelegate, CCQuizManagerD
         let currentWord = word.lowercased()
         if let allWords = wordsLeft {
             if allWords.contains(currentWord) {
-                print("WORD FOUND !!")
                 return true
             }
         }
@@ -78,31 +84,83 @@ class CCQuizViewController: UIViewController, CCQuizViewDelegate, CCQuizManagerD
     }
     
     private func addAnswerToTableView() {
-        let indexPath = IndexPath(row: correctWords.count - 1, section: 0)
+        let indexPath = IndexPath(row: correctWords.count - kOne, section: kZero)
         mainView.addAnswerToTableViewAt(indexPath: indexPath)
+    }
+    
+    private func updateCount() {
+        mainView.updateAmountRight(currentAmount: correctWords.count, totalAmount: totalWords)
     }
     
     private func clearTextField() {
         mainView.clearTextField()
     }
     
+    private func setupAmountAndTimer() {
+        mainView.updateAmountRight(currentAmount: correctWords.count, totalAmount: totalWords)
+        mainView.updateTimerLabel(minutes: retrieveMinutesLeft(), seconds: retrieveSecondsLeft())
+    }
+    
+    @objc
+    private func updateTimer() {
+        if totalSeconds != 0 {
+            totalSeconds -= kOne
+            mainView.updateTimerLabel(minutes: retrieveMinutesLeft(), seconds: retrieveSecondsLeft())
+        } else {
+            stopTimer()
+            print("YOU LOST!!")
+        }
+    }
+    
+    private func retrieveMinutesLeft() -> Int {
+        return Int(totalSeconds) / 60 % 60
+    }
+    
+    private func retrieveSecondsLeft() -> Int {
+        return Int(totalSeconds) % 60
+    }
+    
+    private func stopTimer() {
+        timer.invalidate()
+        timerIsOn = false
+    }
+    
+    private func resetQuiz() {
+        totalSeconds = 30
+        timer.fire()
+        //clearTableView, textField and words arrays, fetch again ?
+    }
+    
+}
+
+extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
+    
     // MARK: - View Delegate
     
     func startResetButtonTapped() {
-        print("start tapped")
+        if !timerIsOn {
+            timer = Timer.scheduledTimer(timeInterval: kOneSecond, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            timerIsOn = true
+        } else {
+            resetQuiz()
+        }
+        mainView.updateButtonText(isPlaying: timerIsOn)
     }
     
     // MARK: - Manager Delegate
     
     func didFetchQuiz(_ quiz: CCQuizViewModel) {
+        // stop loading
         wordsLeft = quiz.answers
         totalWords = wordsLeft?.count ?? kZero
         DispatchQueue.main.async {
             self.mainView.setupQuestion(question: quiz.question)
         }
+        setupAmountAndTimer()
     }
     
     func errorToFetch(_ error: CCError) {
+        // stop loading
         print(error.errorType)
     }
     
@@ -124,8 +182,7 @@ extension CCQuizViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = correctWords[indexPath.row]
+        
         return cell
     }
-    
-    
 }

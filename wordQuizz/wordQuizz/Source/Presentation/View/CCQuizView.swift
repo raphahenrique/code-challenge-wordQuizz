@@ -49,10 +49,31 @@ class CCQuizView: UIView {
     
     func addAnswerToTableViewAt(indexPath: IndexPath) {
         wordsTableView.insertRows(at: [indexPath], with: .automatic)
+        wordsTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
+    func updateAmountRight(currentAmount: Int, totalAmount: Int) {
+        DispatchQueue.main.async {
+            self.amountRightLabel.text = "\(String(format: "%02d", currentAmount))/\(totalAmount)"
+        }
     }
     
     func clearTextField() {
         wordTextField.text = String()
+    }
+    
+    func updateTimerLabel(minutes: Int, seconds: Int) {
+        DispatchQueue.main.async {
+            self.timerLabel.text = "\(String(format: "%02d", minutes)):\(String(format: "%02d", seconds))"
+        }
+    }
+    
+    func updateButtonText(isPlaying: Bool) {
+        if isPlaying {
+            startResetButton.setTitle("Reset", for: .normal)
+        } else {
+            startResetButton.setTitle("Start", for: .normal)
+        }
     }
     
 }
