@@ -28,7 +28,7 @@ class CCQuizViewController: UIViewController {
     private var correctWords = [String]()
     
     private var timer = Timer()
-    private var totalSeconds = 30
+    private var totalSeconds = 300
     private var timerIsOn = false
     
     private var bottomViewStartingYPosition = CGFloat(0.0)
@@ -130,7 +130,7 @@ class CCQuizViewController: UIViewController {
     
     private func resetQuiz() {
         stopTimer()
-        totalSeconds = 30
+        totalSeconds = 300
         startTimer()
         correctWords.removeAll()
         mainView.clearTextField()
