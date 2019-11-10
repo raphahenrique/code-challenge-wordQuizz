@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CCQuizViewController.swift
 //  wordQuizz
 //
 //  Created by Raphael Henrique Fontes Sil on 08/11/19.
@@ -31,6 +31,9 @@ class CCQuizViewController: UIViewController {
     private var totalSeconds = 30
     private var timerIsOn = false
     
+    private var bottomViewStartingYPosition = CGFloat(0.0)
+    private var initialBottomViewConstraint = CGFloat(0.0)
+    
     // MARK: - Overrides
     
     override func viewDidLoad() {
@@ -49,6 +52,9 @@ class CCQuizViewController: UIViewController {
         mainView.wordsTableView.delegate = self
         mainView.wordsTableView.dataSource = self
         mainView.updateButtonText(isPlaying: timerIsOn)
+        mainView.setupWordTextField(isEnable: false)
+        mainView.setupKeyboardNotifications()
+        initialBottomViewConstraint = self.mainView.bottomViewBottomConstraint.constant
     }
     
     private func fetchQuiz() {
@@ -66,8 +72,9 @@ class CCQuizViewController: UIViewController {
                 updateCount()
                 clearTextField()
                 if correctWords.count == totalWords {
-                    print("!!! WIN !!!")
                     stopTimer()
+                    print("!!! WIN !!!")
+                    //show alert win
                 }
             }
         }
@@ -98,26 +105,19 @@ class CCQuizViewController: UIViewController {
     
     private func setupAmountAndTimer() {
         mainView.updateAmountRight(currentAmount: correctWords.count, totalAmount: totalWords)
-        mainView.updateTimerLabel(minutes: retrieveMinutesLeft(), seconds: retrieveSecondsLeft())
+        mainView.updateTimerLabel(minutes: CCUtils.retrieveMinutesLeft(on: totalSeconds), seconds: CCUtils.retrieveSecondsLeft(on: totalSeconds))
     }
     
     @objc
     private func updateTimer() {
         if totalSeconds != 0 {
             totalSeconds -= kOne
-            mainView.updateTimerLabel(minutes: retrieveMinutesLeft(), seconds: retrieveSecondsLeft())
+            mainView.updateTimerLabel(minutes: CCUtils.retrieveMinutesLeft(on: totalSeconds), seconds: CCUtils.retrieveSecondsLeft(on: totalSeconds))
         } else {
             stopTimer()
             print("YOU LOST!!")
+            // Show alert lost
         }
-    }
-    
-    private func retrieveMinutesLeft() -> Int {
-        return Int(totalSeconds) / 60 % 60
-    }
-    
-    private func retrieveSecondsLeft() -> Int {
-        return Int(totalSeconds) % 60
     }
     
     private func stopTimer() {
@@ -139,12 +139,30 @@ extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
     
     func startResetButtonTapped() {
         if !timerIsOn {
+            mainView.setupWordTextField(isEnable: true)
             timer = Timer.scheduledTimer(timeInterval: kOneSecond, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             timerIsOn = true
         } else {
             resetQuiz()
         }
         mainView.updateButtonText(isPlaying: timerIsOn)
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.mainView.bottomViewBottomConstraint.constant == initialBottomViewConstraint {
+                self.mainView.bottomViewBottomConstraint.constant += keyboardSize.height
+                self.mainView.layoutIfNeeded()
+            }
+        }
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        if self.mainView.bottomViewBottomConstraint.constant != initialBottomViewConstraint {
+            self.mainView.bottomViewBottomConstraint.constant = initialBottomViewConstraint
+            self.mainView.layoutIfNeeded()
+        }
     }
     
     // MARK: - Manager Delegate
@@ -166,14 +184,6 @@ extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
     
 }
 
-extension CCQuizViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
-
 extension CCQuizViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return correctWords.count
@@ -184,5 +194,13 @@ extension CCQuizViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = correctWords[indexPath.row]
         
         return cell
+    }
+}
+
+extension CCQuizViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

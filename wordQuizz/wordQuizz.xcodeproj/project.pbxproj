@@ -19,6 +19,7 @@
 		AB711C0B2377416B00708D30 /* CCQuizProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C0A2377416B00708D30 /* CCQuizProvider.swift */; };
 		AB711C0D23774A7300708D30 /* CCQuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C0C23774A7300708D30 /* CCQuizManager.swift */; };
 		AB711C1023776CF900708D30 /* CCQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB711C0F23776CF900708D30 /* CCQuizViewModel.swift */; };
+		ABB5C2FB23785D2200F2B1B6 /* CCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB5C2FA23785D2200F2B1B6 /* CCUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		AB711C0A2377416B00708D30 /* CCQuizProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCQuizProvider.swift; sourceTree = "<group>"; };
 		AB711C0C23774A7300708D30 /* CCQuizManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCQuizManager.swift; sourceTree = "<group>"; };
 		AB711C0F23776CF900708D30 /* CCQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCQuizViewModel.swift; sourceTree = "<group>"; };
+		ABB5C2FA23785D2200F2B1B6 /* CCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		AB711BFA23762AE100708D30 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				ABB5C2F923785D1200F2B1B6 /* Utils */,
 				AB711C072376602700708D30 /* View */,
 				AB711BDC2376277100708D30 /* Info.plist */,
 				AB711BD02376277000708D30 /* AppDelegate.swift */,
@@ -224,6 +227,14 @@
 				AB711C0F23776CF900708D30 /* CCQuizViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ABB5C2F923785D1200F2B1B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ABB5C2FA23785D2200F2B1B6 /* CCUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +341,7 @@
 				AB711BFE23762BFF00708D30 /* CCQuizModel.swift in Sources */,
 				AB711C0D23774A7300708D30 /* CCQuizManager.swift in Sources */,
 				AB711C022376421300708D30 /* CCQuizView.swift in Sources */,
+				ABB5C2FB23785D2200F2B1B6 /* CCUtils.swift in Sources */,
 				AB711C1023776CF900708D30 /* CCQuizViewModel.swift in Sources */,
 				AB711BD32376277000708D30 /* CCQuizViewController.swift in Sources */,
 				AB711C0B2377416B00708D30 /* CCQuizProvider.swift in Sources */,
