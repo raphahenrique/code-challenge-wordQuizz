@@ -195,8 +195,8 @@ extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
         totalWords = wordsLeft?.count ?? kZero
         DispatchQueue.main.async {
             self.mainView.setupQuestion(question: quiz.question)
+            self.setupAmountAndTimer()
         }
-        setupAmountAndTimer()
     }
     
     func errorToFetch(_ error: CCError) {
