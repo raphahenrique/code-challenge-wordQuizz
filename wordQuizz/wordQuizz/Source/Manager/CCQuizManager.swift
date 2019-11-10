@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CCQuizManagerDelegate {
-    func didFetchQuiz(_ quiz: CCQuizModel)
+    func didFetchQuiz(_ quiz: CCQuizViewModel)
     func errorToFetch(_ error: CCError)
 }
 
@@ -28,16 +28,22 @@ class CCQuizManager {
             if let wordsData = data {
                 do {
                     let quiz = try JSONDecoder().decode(CCQuizModel.self, from: wordsData)
-                    self?.delegate?.didFetchQuiz(quiz)
+                    
+                    if let quizViewModel = self?.wrapToViewModel(quiz: quiz) {
+                        self?.delegate?.didFetchQuiz(quizViewModel)
+                    }
                 } catch {
                     let currentError = CCError(error: error, errorType: .genericError)
                     self?.delegate?.errorToFetch(currentError)
                 }
             }
-            
         }
-    
     }
+    
+    private func wrapToViewModel(quiz: CCQuizModel) -> CCQuizViewModel {
+        return CCQuizViewModel(entry: quiz)
+    }
+    
     
 }
 

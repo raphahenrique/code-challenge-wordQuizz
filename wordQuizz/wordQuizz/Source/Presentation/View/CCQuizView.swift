@@ -41,4 +41,18 @@ class CCQuizView: UIView {
         delegate?.startResetButtonTapped()
     }
     
+    // MARK: - Functions
+    
+    func setupQuestion(question: String) {
+        quizTitleLabel.text = question
+    }
+    
+    func addAnswerToTableViewAt(indexPath: IndexPath) {
+        wordsTableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    func clearTextField() {
+        wordTextField.text = String()
+    }
+    
 }
