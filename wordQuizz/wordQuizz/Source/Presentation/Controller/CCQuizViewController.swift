@@ -58,7 +58,7 @@ class CCQuizViewController: UIViewController {
     }
     
     private func fetchQuiz() {
-        // start loading
+        startLoading()
         manager.fetchWordQuiz()
     }
     
@@ -123,10 +123,15 @@ class CCQuizViewController: UIViewController {
         timerIsOn = false
     }
     
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: kOneSecond, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timerIsOn = true
+    }
+    
     private func resetQuiz() {
         stopTimer()
         totalSeconds = 30
-        timer.fire()
+        startTimer()
         correctWords.removeAll()
         mainView.clearTextField()
         mainView.wordsTableView.reloadData()
@@ -158,8 +163,7 @@ extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
     func startResetButtonTapped() {
         if !timerIsOn {
             mainView.setupWordTextField(isEnable: true)
-            timer = Timer.scheduledTimer(timeInterval: kOneSecond, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-            timerIsOn = true
+            startTimer()
         } else {
             resetQuiz()
         }
@@ -186,7 +190,7 @@ extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
     // MARK: - Manager Delegate
     
     func didFetchQuiz(_ quiz: CCQuizViewModel) {
-        // stop loading
+        stopLoading()
         wordsLeft = quiz.answers
         totalWords = wordsLeft?.count ?? kZero
         DispatchQueue.main.async {
@@ -196,8 +200,7 @@ extension CCQuizViewController: CCQuizViewDelegate, CCQuizManagerDelegate {
     }
     
     func errorToFetch(_ error: CCError) {
-        // stop loading
-        print(error.errorType)
+        stopLoading()
     }
     
 }
