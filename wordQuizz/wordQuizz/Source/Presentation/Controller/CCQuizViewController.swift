@@ -73,8 +73,7 @@ class CCQuizViewController: UIViewController {
                 clearTextField()
                 if correctWords.count == totalWords {
                     stopTimer()
-                    print("!!! WIN !!!")
-                    //show alert win
+                    gameWonAlert()
                 }
             }
         }
@@ -115,8 +114,7 @@ class CCQuizViewController: UIViewController {
             mainView.updateTimerLabel(minutes: CCUtils.retrieveMinutesLeft(on: totalSeconds), seconds: CCUtils.retrieveSecondsLeft(on: totalSeconds))
         } else {
             stopTimer()
-            print("YOU LOST!!")
-            // Show alert lost
+            gameLostAlert()
         }
     }
     
@@ -126,9 +124,29 @@ class CCQuizViewController: UIViewController {
     }
     
     private func resetQuiz() {
+        stopTimer()
         totalSeconds = 30
         timer.fire()
-        //clearTableView, textField and words arrays, fetch again ?
+        correctWords.removeAll()
+        mainView.clearTextField()
+        mainView.wordsTableView.reloadData()
+        fetchQuiz()
+    }
+    
+    private func gameLostAlert() {
+        let alert = UIAlertController(title: "Time finished", message: "Sorry, time is up! You got \(correctWords.count) out of \(totalWords) answers.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { action in
+           self.resetQuiz()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func gameWonAlert() {
+        let alert = UIAlertController(title: "Congratulations", message: "Good job! You found all the answers on time. Keep up with the great work.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Play Again", style: .default, handler: { action in
+            self.resetQuiz()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
